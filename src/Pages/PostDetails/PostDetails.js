@@ -1,5 +1,4 @@
 import React from "react";
-
 const PostDetails = () => {
   return (
     <div>
@@ -7,5 +6,4 @@ const PostDetails = () => {
     </div>
   );
 };
-
 export default PostDetails;
