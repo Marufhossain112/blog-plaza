@@ -5,7 +5,11 @@ const PostDetails = ({ post }) => {
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
-          <img src={image} alt="Shoes" />
+          <img
+            style={{ height: "235px", width: "365px" }}
+            src={image}
+            alt="Shoes"
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
