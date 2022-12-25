@@ -1,11 +1,14 @@
 import React from "react";
 import { FcLike } from "react-icons/fc";
-const PostDetails = ({ post }) => {
+import { BsArrowRightShort } from "react-icons/bs";
+import { Link } from "react-router-dom";
+
+const Posts = ({ post }) => {
   const handleReadMore = () => {
     console.log("I am clicked");
   };
   const { image, id, likes, owner, publishDate, tags, text } = post;
-  const { title, firstName, lastName, picture } = owner;
+  const { firstName, lastName, picture } = owner;
   return (
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -56,12 +59,20 @@ const PostDetails = ({ post }) => {
               asperiores commodi voluptas. Earum, incidunt velit...
             </p>
           </div>
-          <div onClick={handleReadMore} className="text-blue-400">
-            Read More
+          <div onClick={handleReadMore} className="text-blue-400 ">
+            <Link to={`/postDetails/${id}`}>
+              {" "}
+              <div className="flex items-center">
+                <span>Read More</span>{" "}
+                <span>
+                  {<BsArrowRightShort className="top-0.5 font-bold relative" />}
+                </span>{" "}
+              </div>
+            </Link>
           </div>
         </div>
       </div>
     </div>
   );
 };
-export default PostDetails;
+export default Posts;
