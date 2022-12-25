@@ -1,5 +1,6 @@
 import React from "react";
 import { FcLike } from "react-icons/fc";
+import { Link } from "react-router-dom";
 const PostDetails = ({ post }) => {
   const handleReadMore = () => {
     console.log("I am clicked");
@@ -56,9 +57,11 @@ const PostDetails = ({ post }) => {
               asperiores commodi voluptas. Earum, incidunt velit...
             </p>
           </div>
-          <div onClick={handleReadMore} className="text-blue-400">
-            Read More
-          </div>
+          <Link to={`/posts/${id}`}>
+            <div onClick={handleReadMore} className="text-blue-400">
+              Read More
+            </div>
+          </Link>
         </div>
       </div>
     </div>
