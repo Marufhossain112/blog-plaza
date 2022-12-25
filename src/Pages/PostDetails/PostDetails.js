@@ -1,6 +1,8 @@
 import React from "react";
+import { FcLike } from "react-icons/fc";
 const PostDetails = ({ post }) => {
   const { image, id, likes, owner, publishDate, tags, text } = post;
+  const { title, firstName, lastName, picture } = owner;
   return (
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -13,14 +15,45 @@ const PostDetails = ({ post }) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">
-            Shoes!
-            <div className="badge badge-secondary">NEW</div>
+            {text.length > 40 ? text.slice(0, 40) : text}
+            <div className="flex items-center">
+              {<FcLike />} <span>{likes}</span>
+            </div>
           </h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline">Fashion</div>
-            <div className="badge badge-outline">Products</div>
+          <div className="card-actions justify-start my-2">
+            <div className="badge badge-outline">{tags[0]}</div>
+            <div className="badge badge-outline">{tags[1]}</div>
+            <div className="badge badge-outline">{tags[2]}</div>
           </div>
+          <div className="flex items-center ">
+            <div>
+              <img
+                style={{ height: "40px" }}
+                className="mask mask-circle"
+                src={picture}
+                alt=""
+              />
+            </div>
+            <div className="flex ml-3">
+              <div>
+                {" "}
+                <span>By</span> {firstName} {lastName}
+              </div>
+              <div style={{ marginLeft: "inherit" }}>
+                {publishDate.length > 10
+                  ? publishDate.slice(0, 10)
+                  : publishDate}
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+              perspiciatis vero, non iste delectus fugiat dolores itaque
+              asperiores commodi voluptas. Earum, incidunt velit...
+            </p>
+          </div>
+          <div className="text-blue-400">Read More</div>
         </div>
       </div>
     </div>
