@@ -1,11 +1,12 @@
 import React from "react";
-import { FcLike } from "react-icons/fc";
 import { Link } from "react-router-dom";
-const PostDetails = ({ post }) => {
-  const { image, id, likes, owner, publishDate, tags, text } = post;
+import { FcLike } from "react-icons/fc";
+
+const IndividualPostDetails = ({ postItem }) => {
+  const { image, id, likes, owner, publishDate, tags, text } = postItem;
   const { title, firstName, lastName, picture } = owner;
   return (
-    <div>
+    <div className="flex justify-center mt-10">
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
           <img
@@ -49,17 +50,13 @@ const PostDetails = ({ post }) => {
           </div>
           <div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              perspiciatis vero, non iste delectus fugiat dolores itaque
-              asperiores commodi voluptas. Earum, incidunt velit...
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis cum eius quo temporibus ex doloribus, voluptatum animi ducimus inventore ratione eum, voluptates optio vero accusantium cumque a, maxime culpa quisquam deserunt minus impedit rerum aliquam! Dolore sequi hic non id, consequuntur voluptates minus. Ex, tempora nam dicta mollitia molestias pariatur accusamus ad eos sunt! Vel ipsam debitis fugiat ipsa praesentium nemo eum iure ipsum voluptates consequatur possimus impedit, nulla tenetur ad iusto sunt veniam delectus saepe? Similique officia corporis voluptatibus natus voluptate perferendis. Modi minus, voluptatibus, eius dolore eveniet reprehenderit sapiente beatae reiciendis, laboriosam sint similique. Ipsum asperiores minima quae ratione dolor. Tempore, reiciendis autem, officia nihil, delectus sint facere incidunt ea molestiae vel laboriosam dolore saepe quas quasi eum.
             </p>
           </div>
-          <Link to={`/posts/${id}`}>
-            <div className="text-blue-400">Read More</div>
-          </Link>
         </div>
       </div>
     </div>
   );
 };
-export default PostDetails;
+
+export default IndividualPostDetails;

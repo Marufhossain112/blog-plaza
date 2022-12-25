@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
+import { Link } from "react-router-dom";
+import IndividualPostDetails from "../IndividualPostDetails/IndividualPostDetails";
 
 const Posts = () => {
   const postData = useLoaderData().data;
@@ -14,7 +16,12 @@ const Posts = () => {
 
   return (
     <div>
-      <h2>This is Posts Page.</h2>
+      {PostDetails.map((postItem) => (
+        <IndividualPostDetails
+          postItem={postItem}
+          key={postItem.id}
+        ></IndividualPostDetails>
+      ))}
     </div>
   );
 };
