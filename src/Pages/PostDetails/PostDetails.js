@@ -6,16 +6,17 @@ const PostDetails = ({ post }) => {
   const { title, firstName, lastName, picture } = owner;
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-96 bg-white shadow-xl">
         <figure>
           <img
+            className="pt-3"
             style={{ height: "235px", width: "365px" }}
             src={image}
             alt="Shoes"
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">
+          <h2 className="card-title text-black">
             {text.length > 40 ? text.slice(0, 40) : text}
             <div className="flex items-center">
               {<FcLike />} <span>{likes}</span>
@@ -38,7 +39,10 @@ const PostDetails = ({ post }) => {
             <div className="flex ml-3">
               <div>
                 {" "}
-                <span>By</span> {firstName} {lastName}
+                <span className="text-gray-300">By</span>{" "}
+                <span className="text-slate-600">
+                  {firstName} {lastName}
+                </span>
               </div>
               <div style={{ marginLeft: "inherit" }}>
                 {publishDate.length > 10
@@ -48,7 +52,7 @@ const PostDetails = ({ post }) => {
             </div>
           </div>
           <div>
-            <p>
+            <p className="text-slate-700">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
               perspiciatis vero, non iste delectus fugiat dolores itaque
               asperiores commodi voluptas. Earum, incidunt velit...

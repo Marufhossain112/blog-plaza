@@ -7,12 +7,14 @@ const AboutUs = () => {
       <div className="mb-5">
         <img src={image} alt="" />
       </div>
-      <div className="flex flex-col lg:items-center ">
-        <p className="text-2xl mb-1 text-justify font-bold">Maruf Hossain</p>
-        <p className="about-me text-justify">
-          I am Maruf Hossain. I am Junior Web Developer. I have skills on
-          Javascript,React,NodeJs,MongoDB,ExpressJs,Firebase etc. I have taken
-          an online course from Programming Hero on Web Development.
+      <div className="flex flex-col items-center ">
+        <p className="text-2xl text-black mb-1 text-justify font-bold">
+          Maruf Hossain
+        </p>
+        <p className="about-me text-slate-700 text-justify">
+          I am Maruf Hossain. I am Junior Web Developer. I have skills
+          onJavascript,React,NodeJs,Firebase etc. I have taken an online course
+          from Programming Hero on Web Development.
         </p>
       </div>
     </div>
