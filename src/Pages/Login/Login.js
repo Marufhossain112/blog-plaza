@@ -33,7 +33,7 @@ const Login = () => {
 
   return (
     <div className="h-[800px] flex justify-center items-center">
-      <div className="w-96 p-7">
+      <div className="w-96 p-7 bg-white rounded-xl">
         <h2 className="text-xl text-center">Login</h2>
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full max-w-xs">
@@ -67,14 +67,14 @@ const Login = () => {
                 },
               })}
               className="input input-bordered w-full max-w-xs"
-            />
+            />{" "}
+            {errors.password && (
+              <p className="text-red-600">{errors.password?.message}</p>
+            )}
             <label className="label">
               {" "}
               <span className="label-text">Forget Password?</span>
             </label>
-            {errors.password && (
-              <p className="text-red-600">{errors.password?.message}</p>
-            )}
           </div>
           <input
             className="btn btn-accent w-full"
@@ -85,7 +85,7 @@ const Login = () => {
             {loginError && <p className="text-red-600">{loginError}</p>}
           </div>
         </form>
-        <p>
+        <p className="pt-3">
           New to Doctors Portal{" "}
           <Link className="text-secondary" to="/signup">
             Create new Account

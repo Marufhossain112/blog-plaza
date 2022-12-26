@@ -35,7 +35,7 @@ const Register = () => {
 
   return (
     <div className="h-[800px] flex justify-center items-center">
-      <div className="w-96 p-7">
+      <div className="w-96 p-7 bg-white rounded-xl">
         <h2 className="text-xl text-center">Sign Up</h2>
         <form onSubmit={handleSubmit(handleSignUp)}>
           <div className="form-control w-full max-w-xs">
@@ -62,7 +62,7 @@ const Register = () => {
             <input
               type="email"
               {...register("email", {
-                required: true,
+                required: "Email Address is required",
               })}
               className="input input-bordered w-full max-w-xs"
             />
@@ -102,7 +102,7 @@ const Register = () => {
           />
           {signUpError && <p className="text-red-600">{signUpError}</p>}
         </form>
-        <p>
+        <p className="pt-3">
           Already have an account{" "}
           <Link className="text-secondary" to="/login">
             Please Login
