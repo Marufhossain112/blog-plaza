@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import { FaRegUser } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -72,30 +73,33 @@ const Navbar = () => {
               class="input input-bordered"
             />
           </div>
-          {
-            user?.uid && <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-              <div class="w-10 rounded-full">
-                <img src="https://placeimg.com/80/80/people" />
-              </div>
-            </label>
-            <ul
-              tabindex="0"
-              class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-white rounded-box w-52"
-            >
-              <li>
-                <a class="justify-between">Profile</a>
-              </li>
-
-              {user?.uid && (
-                <li onClick={handleLogOut}>
-                  <a>Logout</a>
+          {user?.uid && (
+            <div class="dropdown dropdown-end">
+              <label style={{border:"1px solid"}} tabIndex="0" class="btn btn-ghost btn-circle avatar ">
+                {user?.photoURL ? (
+                  <div class="w-10 rounded-full">
+                    <img src={user?.photoURL} alt="profile.jpg" />
+                  </div>
+                ) : (
+                  <FaRegUser ></FaRegUser>
+                )}
+              </label>
+              <ul
+                tabIndex="0"
+                class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-white rounded-box w-52"
+              >
+                <li>
+                  <a class="justify-between">Profile</a>
                 </li>
-              )}
-            </ul>
-          </div>
-          }
-          
+
+                {user?.uid && (
+                  <li onClick={handleLogOut}>
+                    <a>Logout</a>
+                  </li>
+                )}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>

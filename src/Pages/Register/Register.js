@@ -22,7 +22,9 @@ const Register = () => {
         toast("User Created Successfully.");
         const userInfo = {
           displayName: data.name,
+          photoURL: data.photoURL,
         };
+        console.log(data.name);
         updateUser(userInfo)
           .then(() => {})
           .catch((err) => console.log(err));
@@ -94,6 +96,17 @@ const Register = () => {
             {errors.password && (
               <p className="text-red-500">{errors.password.message}</p>
             )}
+          </div>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              {" "}
+              <span className="label-text">PhotoURL</span>
+            </label>
+            <input
+              type="text"
+              {...register("photoURL")}
+              className="input input-bordered w-full max-w-xs"
+            />
           </div>
           <input
             className="btn btn-accent w-full mt-4"
