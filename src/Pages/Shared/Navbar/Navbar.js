@@ -65,31 +65,37 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{ulItems}</ul>
         </div>
-        <div class="flex-none gap-2">
-          <div class="form-control">
+        <div className="flex-none gap-2">
+          <div className="form-control">
             <input
               type="text"
               placeholder="Search"
-              class="input input-bordered"
+              className="input input-bordered"
             />
           </div>
           {user?.uid && (
-            <div class="dropdown dropdown-end">
-              <label style={{border:"1px solid"}} tabIndex="0" class="btn btn-ghost btn-circle avatar ">
+            <div className="dropdown dropdown-end">
+              <label
+                style={{ border: "1px solid" }}
+                tabIndex="0"
+                className="btn btn-ghost btn-circle avatar "
+              >
                 {user?.photoURL ? (
-                  <div class="w-10 rounded-full">
+                  <div className="w-10 rounded-full">
                     <img src={user?.photoURL} alt="profile.jpg" />
                   </div>
                 ) : (
-                  <FaRegUser ></FaRegUser>
+                  <FaRegUser></FaRegUser>
                 )}
               </label>
               <ul
                 tabIndex="0"
-                class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-white rounded-box w-52"
+                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-white rounded-box w-52"
               >
                 <li>
-                  <a class="justify-between">Profile</a>
+                  <Link to={"/profile"} className="justify-between">
+                    Profile
+                  </Link>
                 </li>
 
                 {user?.uid && (

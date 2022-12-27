@@ -1,25 +1,19 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
-import { Link } from "react-router-dom";
 import IndividualPostDetails from "../IndividualPostDetails/IndividualPostDetails";
 
 const Posts = () => {
-  const postData = useLoaderData().data;
-  const [PostDetails, setPostDetails] = useState([]);
-  useEffect(() => {
-    const matched = postData.filter((item) =>
-      window.location.href.includes(item.id)
-    );
-    setPostDetails(matched);
-  }, [postData]);
-  console.log(PostDetails);
+  const PostDetails = useLoaderData();
+  const [PostDetailsData, setPostDetailsData] = useState([PostDetails]);
+  // console.log(PostDetails);
 
   return (
     <div>
-      {PostDetails.map((postItem) => (
+      {PostDetailsData.map((post) => (
         <IndividualPostDetails
-          postItem={postItem}
-          key={postItem.id}
+          post={post}
+          key={post._id}
         ></IndividualPostDetails>
       ))}
     </div>

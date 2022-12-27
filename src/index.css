@@ -3,14 +3,19 @@
 @tailwind utilities;
 body {
   background-color: cornsilk;
+  color: black;
   margin: 0;
-
-  font-family:"Inter", "Roboto", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell",
+  font-family: "Inter", "Roboto", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+h1,
+h2,
+h3 {
+  color: black;
+  font-weight: 500;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
