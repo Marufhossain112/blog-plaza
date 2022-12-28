@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FcLike } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaRegUser } from "react-icons/fa";
@@ -103,12 +102,7 @@ const PostDetails = ({ post }) => {
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title text-black">
-            {title}
-            <div className="flex items-center">
-              {<FcLike />} <span></span>
-            </div>
-          </h2>
+          <h2 className="card-title text-black">{title}</h2>
           <div className="card-actions justify-start my-2">
             <div className="badge badge-outline">{tags}</div>
           </div>
@@ -175,7 +169,6 @@ const PostDetails = ({ post }) => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };

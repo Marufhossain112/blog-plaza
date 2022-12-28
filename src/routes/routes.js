@@ -12,6 +12,7 @@ import PostDetails from "../Pages/PostDetails/PostDetails";
 import Posts from "../Pages/Posts/Posts";
 import Profile from "../Pages/Profile/Profile";
 import Register from "../Pages/Register/Register";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -53,7 +54,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myBlog",
-        element: <MyBlog></MyBlog>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyBlog></MyBlog>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updateBlog/:id",

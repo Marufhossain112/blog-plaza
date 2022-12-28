@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { FcLike } from "react-icons/fc";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { FaRegUser } from "react-icons/fa";
 
@@ -21,9 +20,6 @@ const IndividualPostDetails = ({ post }) => {
           <div className="card-body">
             <h2 className="card-title text-black">
               {title}
-              <div className="flex items-center">
-                {<FcLike />} <span></span>
-              </div>
             </h2>
             <div className="card-actions justify-start my-2">
               <div className="badge badge-outline">{tags}</div>
