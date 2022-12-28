@@ -64,7 +64,9 @@ const PostDetails = ({ post }) => {
             <div className="text-blue-400">Read More</div>
           </Link>
           <div className="flex justify-between ">
-            <button className="btn btn-outline text-black">Edit</button>
+            <Link to={`/updateBlog/${_id}`}>
+              <button className="btn btn-outline text-black">Edit</button>
+            </Link>
             <button className="btn btn-outline text-black">Delete</button>
             <button className="btn btn-outline text-black">Publish</button>
           </div>

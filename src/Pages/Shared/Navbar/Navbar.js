@@ -5,7 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log("User", user);
+  // console.log("User", user);
   const handleLogOut = () => {
     logOut()
       .then(() => {})

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
 const AddPost = () => {
   const { user } = useContext(AuthContext);
@@ -45,9 +44,7 @@ const AddPost = () => {
             .then((res) => res.json())
             .then((result) => {
               if (result) {
-                // console.log(result);
                 reset();
-                // navigate("/dashboard/myproduct");
               }
             });
         }

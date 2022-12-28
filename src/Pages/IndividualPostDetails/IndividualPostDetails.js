@@ -8,7 +8,6 @@ const IndividualPostDetails = ({ post }) => {
   const { user } = useContext(AuthContext);
   return (
     <div>
-      (
       <div className="flex justify-center">
         <div className="card pt-10 w-full bg-white shadow-xl">
           <figure>
