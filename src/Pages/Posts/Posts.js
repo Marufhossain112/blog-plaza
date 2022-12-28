@@ -76,7 +76,7 @@ const Posts = () => {
         ))}
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-3">
         <form onSubmit={handleComments}>
           <input
             type="text"

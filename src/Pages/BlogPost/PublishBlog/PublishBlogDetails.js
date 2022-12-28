@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import { FcLike } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaRegUser } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import PublishBlog from "./PublishBlog";
+import LikeButton from "../../../layouts/Home/LikeButton/LikeButton";
 
 const PublishBlogDetails = ({ post }) => {
   const { title, image, _id, author, date, tags, blogText } = post;
@@ -26,7 +26,7 @@ const PublishBlogDetails = ({ post }) => {
           <h2 className="card-title text-black">
             {title}
             <div className="flex items-center">
-              {<FcLike />} <span></span>
+              {<LikeButton />} <span></span>
             </div>
           </h2>
           <div className="card-actions justify-start my-2">
