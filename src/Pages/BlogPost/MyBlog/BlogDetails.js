@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 
 const PostDetails = ({ post }) => {
-  const [published, setPublished] = useState(false);
+  // const [published, setPublished] = useState(false);
   const { title, image, _id, author, date, tags, blogText } = post;
   const { user } = useContext(AuthContext);
   const { data: addedBlogs = [], refetch } = useQuery({
@@ -47,7 +47,7 @@ const PostDetails = ({ post }) => {
     }
   };
   const handlePublish = () => {
-    setPublished(!published);
+    // setPublished(!published);
     fetch(`http://localhost:5000/publishBlog/`, {
       method: "POST",
       headers: {
@@ -63,35 +63,36 @@ const PostDetails = ({ post }) => {
       });
   };
 
-  const handleUnPublish = () => {
-    const agree = window.confirm(
-      `Are you sure you want to Unpublish: ${title}`
-    );
-    if (agree) {
-      fetch(`http://localhost:5000/publishBlog/${_id}`, {
-        method: "DELETE",
-        
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(_id);
-        console.log(data);
-          setPublished(!published);
+  // const handleUnPublish = () => {
+  //   const agree = window.confirm(
+  //     `Are you sure you want to Unpublish: ${title}`
+  //   );
+  //   if (agree) {
+  //     fetch(`http://localhost:5000/publishBlog/${_id}`, {
+  //       method: "DELETE",
 
-          // if (data.acknowledged) {
-          //   // refetch();
-          //   toast.success("Successfully deleted");
-          //   const remainingBlogs = publishedBlog.filter(
-          //     (post) => post._id !== _id
-          //   );
-          //   setPublishedBlog(remainingBlogs);
-          //   console.log(publishedBlog);
-          // }
-        });
-    }
-  };
+  //     })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(_id);
+  //       console.log(data);
+  //         setPublished(!published);
+
+  //         // if (data.acknowledged) {
+  //         //   // refetch();
+  //         //   toast.success("Successfully deleted");
+  //         //   const remainingBlogs = publishedBlog.filter(
+  //         //     (post) => post._id !== _id
+  //         //   );
+  //         //   setPublishedBlog(remainingBlogs);
+  //         //   console.log(publishedBlog);
+  //         // }
+  //       });
+  //   }
+  // };
   return (
     <div>
+      {/* blog details section */}
       <div className="card w-96 bg-white shadow-xl">
         <figure>
           <img
@@ -159,30 +160,22 @@ const PostDetails = ({ post }) => {
             >
               Delete
             </button>
-            {published ? (
-              <>
-                {" "}
-                <button
-                  onClick={() => handlePublish(_id)}
-                  className="btn btn-outline text-black"
-                >
-                  Publish
-                </button>
-              </>
-            ) : (
-              <>
-                {" "}
-                <button
-                  onClick={() => handleUnPublish(_id)}
-                  className="btn btn-outline text-black"
-                >
-                  Unpublish
-                </button>
-              </>
-            )}
+            {/* {published ? ( */}
+            <>
+              {" "}
+              <button
+                onClick={() => handlePublish(_id)}
+                className="btn btn-outline text-black"
+              >
+                Publish
+              </button>
+            </>
+
+            {/* } */}
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

@@ -25,9 +25,13 @@ code {
   padding-left: 10px;
   border-radius: 22px;
   padding-left: 25px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
 }
 .card {
-  height: 460px;
+  min-height: 460px;
   overflow: auto;
   overflow-wrap: break-word;
   word-wrap: break-word;
