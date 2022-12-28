@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <div>
       <div className="navbar text-black bg-green-300 justify-between w-full mx-auto">
-        <div className="navbar-start">
+        <div className="navbar-start w-0">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -69,13 +69,6 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{ulItems}</ul>
         </div>
         <div className="flex-none gap-2">
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input input-bordered"
-            />
-          </div>
           {user?.uid && (
             <div className="dropdown dropdown-end">
               <label
