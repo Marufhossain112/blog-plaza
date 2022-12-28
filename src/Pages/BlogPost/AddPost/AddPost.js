@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
 const AddPost = () => {
   const { user } = useContext(AuthContext);
@@ -44,6 +45,7 @@ const AddPost = () => {
             .then((res) => res.json())
             .then((result) => {
               if (result) {
+                toast.success("Successfully added post")
                 reset();
               }
             });
@@ -59,7 +61,7 @@ const AddPost = () => {
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-7 bg-white rounded-xl">
         <h2 className="text-xl text-center">Add Blog</h2>
-        <form onSubmit={handleSubmit(handleAddData)}>
+        <form style={{color:"white"}} onSubmit={handleSubmit(handleAddData)}>
           <div className="form-control w-full max-w-xs">
             <label className="label flex items-center">
               {" "}

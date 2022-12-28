@@ -1,12 +1,45 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FcLike } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaRegUser } from "react-icons/fa";
+import { toast } from "react-hot-toast";
+import { useQuery } from "@tanstack/react-query";
 
 const PostDetails = ({ post }) => {
   const { title, image, _id, author, date, tags, blogText } = post;
   const { user } = useContext(AuthContext);
+  const { data: addedBlogs = [], refetch } = useQuery({
+    queryKey: ["addBlog"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/addBlog");
+      const data = await res.json();
+      return data;
+    },
+  });
+  console.log(addedBlogs);
+  const [addedBlogsData, setAddedBlogsData] = useState();
+
+  const handleDelete = () => {
+    const agree = window.confirm(`Are you sure you want to delete: ${title}`);
+    if (agree) {
+      fetch(`http://localhost:5000/deleteBlog/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            refetch();
+            toast.success("Successfully deleted");
+            const remainingBlogs = addedBlogsData.filter(
+              (post) => post._id !== _id
+            );
+            setAddedBlogsData(remainingBlogs);
+          }
+        });
+    }
+  };
+
   return (
     <div>
       <div className="card w-96 bg-white shadow-xl">
@@ -67,7 +100,12 @@ const PostDetails = ({ post }) => {
             <Link to={`/updateBlog/${_id}`}>
               <button className="btn btn-outline text-black">Edit</button>
             </Link>
-            <button className="btn btn-outline text-black">Delete</button>
+            <button
+              onClick={() => handleDelete(_id)}
+              className="btn btn-outline text-black"
+            >
+              Delete
+            </button>
             <button className="btn btn-outline text-black">Publish</button>
           </div>
         </div>

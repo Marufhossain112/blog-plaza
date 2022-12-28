@@ -33,7 +33,13 @@ const UpdateBlog = () => {
   };
   const handleOnBlur = (event) => {
     const field = event.target.name;
-    const value = event.target.value;
+    let value;
+    if (value == null || "") {
+      value = event.target.defaultValue;
+    } else {
+      value = event.target.value;
+    }
+    // const value = event.target.value;
     const newBlogDetails = { ...blogDetailsData };
     newBlogDetails[field] = value;
     setBlogDetailsData(newBlogDetails);
