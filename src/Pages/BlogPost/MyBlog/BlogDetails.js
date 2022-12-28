@@ -12,7 +12,7 @@ const PostDetails = ({ post }) => {
   const { data: addedBlogs = [], refetch } = useQuery({
     queryKey: ["addBlog"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/addBlog");
+      const res = await fetch("https://blog-plaza-server.vercel.app/addBlog");
       const data = await res.json();
       return data;
     },
@@ -21,7 +21,7 @@ const PostDetails = ({ post }) => {
   const [addedBlogsData, setAddedBlogsData] = useState();
   const [publishedBlog, setPublishedBlog] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/publishBlog/")
+    fetch("https://blog-plaza-server.vercel.app/publishBlog/")
       .then((res) => res.json())
       .then((data) => setPublishedBlog(data));
   }, []);
@@ -29,7 +29,7 @@ const PostDetails = ({ post }) => {
   const handleDelete = () => {
     const agree = window.confirm(`Are you sure you want to delete: ${title}`);
     if (agree) {
-      fetch(`http://localhost:5000/deleteBlog/${_id}`, {
+      fetch(`https://blog-plaza-server.vercel.app/deleteBlog/${_id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -47,7 +47,7 @@ const PostDetails = ({ post }) => {
   };
   const handlePublish = () => {
     // setPublished(!published);
-    fetch(`http://localhost:5000/publishBlog/`, {
+    fetch(`https://blog-plaza-server.vercel.app/publishBlog/`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -67,7 +67,7 @@ const PostDetails = ({ post }) => {
   //     `Are you sure you want to Unpublish: ${title}`
   //   );
   //   if (agree) {
-  //     fetch(`http://localhost:5000/publishBlog/${_id}`, {
+  //     fetch(`https://blog-plaza-server.vercel.app/publishBlog/${_id}`, {
   //       method: "DELETE",
 
   //     })

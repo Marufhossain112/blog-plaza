@@ -35,7 +35,7 @@ const AddPost = () => {
             date: `${year}-${month}-${date}`,
             image: image,
           };
-          fetch("http://localhost:5000/addBlog", {
+          fetch("https://blog-plaza-server.vercel.app/addBlog", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -45,7 +45,7 @@ const AddPost = () => {
             .then((res) => res.json())
             .then((result) => {
               if (result) {
-                toast.success("Successfully added post")
+                toast.success("Successfully added post");
                 reset();
               }
             });
@@ -61,7 +61,7 @@ const AddPost = () => {
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-7 bg-white rounded-xl">
         <h2 className="text-xl text-center">Add Blog</h2>
-        <form style={{color:"white"}} onSubmit={handleSubmit(handleAddData)}>
+        <form style={{ color: "white" }} onSubmit={handleSubmit(handleAddData)}>
           <div className="form-control w-full max-w-xs">
             <label className="label flex items-center">
               {" "}

@@ -14,7 +14,7 @@ const UpdateBlog = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(review);
-    fetch(`http://localhost:5000/updateBlog/${_id}`, {
+    fetch(`https://blog-plaza-server.vercel.app/updateBlog/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -7,7 +7,9 @@ const PublishBlog = () => {
   const { data: publishBlogData = [] } = useQuery({
     queryKey: ["publishBlog"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/publishBlog");
+      const res = await fetch(
+        "https://blog-plaza-server.vercel.app/publishBlog"
+      );
       const data = await res.json();
       return data;
     },

@@ -9,7 +9,7 @@ const Posts = () => {
   const { data: commentsData = [], refetch } = useQuery({
     queryKey: ["comments"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/comments");
+      const res = await fetch("https://blog-plaza-server.vercel.app/comments");
       const data = await res.json();
       return data;
     },
@@ -40,7 +40,7 @@ const Posts = () => {
     event.preventDefault();
     // console.log(reviews);
 
-    fetch("http://localhost:5000/comments", {
+    fetch("https://blog-plaza-server.vercel.app/comments", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(commentsDetails),

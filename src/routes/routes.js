@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
         path: "/blogDetails/:id",
         element: <Posts></Posts>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/blogDetails/${params.id}`),
+          fetch(`https://blog-plaza-server.vercel.app/blogDetails/${params.id}`),
       },
       {
         path: "/login",
@@ -65,7 +65,7 @@ export const router = createBrowserRouter([
         path: "/updateBlog/:id",
         element: <UpdateBlog></UpdateBlog>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/blogDetails/${params.id}`),
+          fetch(`https://blog-plaza-server.vercel.app/blogDetails/${params.id}`),
       },
     ],
   },
