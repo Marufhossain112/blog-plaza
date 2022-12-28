@@ -15,9 +15,10 @@ const MyBlog = () => {
 
   return (
     <div>
-      <div className="flex gap-5 justify-center flex-wrap mt-10">
+      <h1 className="text-center mt-10 font-bold text-2xl">My Blogs</h1>
+      <div className="flex gap-5 justify-center flex-wrap mt-5">
         {myBlogData.map((post) => (
-          <BlogDetails post={post} key={post.id}></BlogDetails>
+          <BlogDetails post={post} key={post._id}></BlogDetails>
         ))}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FcLike } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 
 const PostDetails = ({ post }) => {
+  const [published, setPublished] = useState(false);
   const { title, image, _id, author, date, tags, blogText } = post;
   const { user } = useContext(AuthContext);
   const { data: addedBlogs = [], refetch } = useQuery({
@@ -17,8 +18,14 @@ const PostDetails = ({ post }) => {
       return data;
     },
   });
-  console.log(addedBlogs);
+  // console.log(addedBlogs);
   const [addedBlogsData, setAddedBlogsData] = useState();
+  const [publishedBlog, setPublishedBlog] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/publishBlog/")
+      .then((res) => res.json())
+      .then((data) => setPublishedBlog(data));
+  }, []);
 
   const handleDelete = () => {
     const agree = window.confirm(`Are you sure you want to delete: ${title}`);
@@ -39,7 +46,50 @@ const PostDetails = ({ post }) => {
         });
     }
   };
+  const handlePublish = () => {
+    setPublished(!published);
+    fetch(`http://localhost:5000/publishBlog/`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(post),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          toast.success("Successfully published post");
+        }
+      });
+  };
 
+  const handleUnPublish = () => {
+    const agree = window.confirm(
+      `Are you sure you want to Unpublish: ${title}`
+    );
+    if (agree) {
+      fetch(`http://localhost:5000/publishBlog/${_id}`, {
+        method: "DELETE",
+        
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(_id);
+        console.log(data);
+          setPublished(!published);
+
+          // if (data.acknowledged) {
+          //   // refetch();
+          //   toast.success("Successfully deleted");
+          //   const remainingBlogs = publishedBlog.filter(
+          //     (post) => post._id !== _id
+          //   );
+          //   setPublishedBlog(remainingBlogs);
+          //   console.log(publishedBlog);
+          // }
+        });
+    }
+  };
   return (
     <div>
       <div className="card w-96 bg-white shadow-xl">
@@ -88,14 +138,17 @@ const PostDetails = ({ post }) => {
           </div>
           <div>
             <p className="text-slate-700">
-              {blogText.length > 140
-                ? blogText.slice(0, 140) + "..."
+              {blogText.length > 100
+                ? blogText.slice(0, 100) + "..."
                 : blogText}
             </p>
           </div>
-          <Link to={`/blogDetails/${_id}`}>
-            <div className="text-blue-400">Read More</div>
-          </Link>
+          {blogText.length > 100 && (
+            <Link to={`/blogDetails/${_id}`}>
+              <div className="text-blue-400">Read More</div>
+            </Link>
+          )}
+
           <div className="flex justify-between ">
             <Link to={`/updateBlog/${_id}`}>
               <button className="btn btn-outline text-black">Edit</button>
@@ -106,7 +159,27 @@ const PostDetails = ({ post }) => {
             >
               Delete
             </button>
-            <button className="btn btn-outline text-black">Publish</button>
+            {published ? (
+              <>
+                {" "}
+                <button
+                  onClick={() => handlePublish(_id)}
+                  className="btn btn-outline text-black"
+                >
+                  Publish
+                </button>
+              </>
+            ) : (
+              <>
+                {" "}
+                <button
+                  onClick={() => handleUnPublish(_id)}
+                  className="btn btn-outline text-black"
+                >
+                  Unpublish
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
