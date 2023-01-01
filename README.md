@@ -3,8 +3,7 @@
 
 A simple app where user can see different kinds of posts.
 
-LIve Link - https://blog-plaza.web.app/home
-
+LIve Link - https://blog-plaza.web.app/
 
 
 ## Features
